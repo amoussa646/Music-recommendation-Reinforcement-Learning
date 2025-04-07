@@ -2,7 +2,8 @@ Music Recommendation System
 Overview
 This project implements a reinforcement learning-based music recommendation system that suggests songs to users based on their preferences and feedback. The system learns from user ratings to improve its recommendations over time.
 
-Features
+Features:
+
 Personalized Recommendations: Adapts to user preferences through feedback
 
 Exploration-Exploitation Balance: Uses an epsilon-greedy approach to balance known preferences with new discoveries
@@ -11,18 +12,25 @@ Feature-Based Matching: Recommends songs based on musical features and eras
 
 Interactive Interface: Simple command-line interface for user interaction
 
-Project Structure
+Project Structure:
 
 music_recommender/
-├── **init**.py
-├── main.py # Main execution script
-├── config.py # Configuration constants
-├── data_loader.py # Data loading functions
-├── recommender.py # Recommendation logic
-├── utils.py # Utility functions
-└── ui.py # User interface functions
+**init**.py
 
-Data Format
+main.py # Main execution script
+
+config.py # Configuration constants
+
+data_loader.py # Data loading functions
+
+recommender.py # Recommendation logic
+
+utils.py # Utility functions
+
+ui.py # User interface functions
+
+Data Format:
+
 The system expects a CSV file named songs.csv in the ../data/ directory with the following format:
 
 Each row represents a song
@@ -33,7 +41,7 @@ Following columns represent features (21 features as defined in config.py)
 
 Example features: decade (1980s, 1990s, etc.), genre (Pop, Rock, etc.)
 
-How to Use
+How to Use:
 
 ## Installation
 
@@ -65,7 +73,8 @@ Then rate the initial recommendations
 
 Continue receiving and rating recommendations
 
-Customization
+Customization:
+
 You can modify several parameters in config.py:
 
 S: Hyperparameter controlling utility calculation
@@ -85,7 +94,8 @@ Epsilon-Greedy Strategy: Balances exploration and exploitation
 
 Iterative Mean Update: Adjusts user preferences based on ratings
 
-Future Improvements
+Future Improvements:
+
 Add more sophisticated recommendation algorithms
 
 Implement user persistence (save/load user profiles)
