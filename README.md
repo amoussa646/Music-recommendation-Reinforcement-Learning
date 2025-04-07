@@ -1,95 +1,83 @@
-Music Recommendation System
-Overview
-This project implements a reinforcement learning-based music recommendation system that suggests songs to users based on their preferences and feedback. The system learns from user ratings to improve its recommendations over time.
+# Music Recommendation System
 
-Features
-Personalized Recommendations: Adapts to user preferences through feedback
+A Python-based music recommendation system that uses a combination of exploration and exploitation strategies to provide personalized song recommendations based on user preferences and ratings.
 
-Exploration-Exploitation Balance: Uses an epsilon-greedy approach to balance known preferences with new discoveries
+## Features
 
-Feature-Based Matching: Recommends songs based on musical features and eras
+- Interactive command-line interface for user preferences and ratings
+- Personalized song recommendations based on:
+  - User's initial feature preferences (genres, decades, etc.)
+  - User's song ratings
+  - Temporal exploration-exploitation balance
+- Support for 21 different musical features including:
+  - Decades (1980s-2020s)
+  - Genres (Pop, Rock, Country, Folk, Dance, etc.)
+  - Musical characteristics (Electric, Acoustic, etc.)
 
-Interactive Interface: Simple command-line interface for user interaction
+## Requirements
 
-Project Structure
-
-music_recommender/
-├── **init**.py
-├── main.py # Main execution script
-├── config.py # Configuration constants
-├── data_loader.py # Data loading functions
-├── recommender.py # Recommendation logic
-├── utils.py # Utility functions
-└── ui.py # User interface functions
-
-Data Format
-The system expects a CSV file named songs.csv in the ../data/ directory with the following format:
-
-Each row represents a song
-
-First column is the song title (used as index)
-
-Following columns represent features (21 features as defined in config.py)
-
-Example features: decade (1980s, 1990s, etc.), genre (Pop, Rock, etc.)
-
-How to Use
+- Python 3.x
+- Required packages (see requirements.txt):
+  - numpy==2.2.4
+  - pandas==1.4.1
 
 ## Installation
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/music-recommender.git
-   cd music-recommender
-   Set up a virtual environment (recommended):
-   ```
+1. Clone the repository:
 
-python -m venv venv
-source venv/bin/activate # On Windows: venv\Scripts\activate
-Install dependencies:
+```bash
+git clone <repository-url>
+cd music_recommender
+```
 
+2. Install the required packages:
+
+```bash
 pip install -r requirements.txt
-Prepare your data:
+```
 
-Place your songs.csv file in the ../data/ directory relative to the project
+3. Ensure you have the songs data file (`songs.csv`) in the `data/` directory.
 
-Ensure the CSV matches the expected format (see Data Format section)
+## Usage
 
-Run the system:
+1. Run the main script:
 
+```bash
 python main.py
+```
 
-First, select your preferred music features
+2. Follow the interactive prompts:
+   - Select your preferred music features from the provided list
+   - Rate initial songs to help the system understand your preferences
+   - Receive and rate recommendations
+   - Continue getting new recommendations as desired
 
-Then rate the initial recommendations
+## How It Works
 
-Continue receiving and rating recommendations
+The recommendation system uses a hybrid approach:
 
-Customization
-You can modify several parameters in config.py:
+1. **Initial Setup**:
 
-S: Hyperparameter controlling utility calculation
+   - Users select preferred musical features
+   - System provides initial songs for rating
 
-NFEATURE: Number of features in your dataset
+2. **Recommendation Algorithm**:
 
-START_CONSTANT: Controls how quickly the system adapts to early ratings
+   - Uses a greedy approach with epsilon-greedy exploration
+   - Balances exploration of new songs with exploitation of known preferences
+   - Considers temporal aspects of recommendations
+   - Updates user preferences based on ratings
 
-FEATURES: List of feature names that match your dataset
+3. **Feature Updates**:
+   - System continuously learns from user ratings
+   - Adjusts recommendations based on evolving preferences
 
-Algorithm Details
-The system uses:
+## Project Structure
 
-Utility Function: Computes song relevance based on user preferences and recency
-
-Epsilon-Greedy Strategy: Balances exploration and exploitation
-
-Iterative Mean Update: Adjusts user preferences based on ratings
-
-Future Improvements
-Add more sophisticated recommendation algorithms
-
-Implement user persistence (save/load user profiles)
-
-Add visualization of recommendation patterns
-
-Support for larger datasets with optimized performance
+- `main.py`: Entry point of the application
+- `config.py`: Configuration settings and constants
+- `data_loader.py`: Handles loading of song data
+- `recommender.py`: Core recommendation algorithms
+- `ui.py`: User interface and interaction handling
+- `utils.py`: Utility functions for calculations and data processing
+- `data/`: Directory containing song data
